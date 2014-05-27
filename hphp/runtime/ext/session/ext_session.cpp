@@ -1573,6 +1573,8 @@ Variant f_session_module_name(const String& newname /* = null_string */) {
   return oldname;
 }
 
+const StaticString s_session_write_close("session_write_close");
+
 bool HHVM_FUNCTION(session_set_save_handler,
     const Object& sessionhandler,
     bool register_shutdown /* = true */) {
@@ -1599,9 +1601,10 @@ bool HHVM_FUNCTION(session_set_save_handler,
   PS(ps_session_handler)->incRefCount();
 
   // remove previous shutdown function
-  g_context->popShutdownFunction(ExecutionContext::ShutDown);
+  g_context->removeShutdownFunction(s_session_write_close,
+                                    ExecutionContext::ShutDown);
   if (register_shutdown) {
-    f_register_shutdown_function(1, String("session_write_close"));
+    f_register_shutdown_function(1, s_session_write_close);
   }
 
   if (ini_get_save_handler() != "user") {
