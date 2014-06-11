@@ -1,0 +1,5 @@
+debian/config-dir/*		etc/hhvm
+hphp/hhvm/hhvm			usr/bin
+hphp/hack/hhi			usr/share/hhvm/hack
+hphp/hack/editor-plugins/emacs	usr/share/hhvm/hack
+hphp/hack/editor-plugins/vim	usr/share/hhvm/hack

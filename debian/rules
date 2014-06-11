@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+export DH_VERBOSE=1
+
+DESTDIR = debian/hhvm
+
+%:
+	dh $@ --parallel "-B$(CURDIR)"
+
+override_dh_auto_configure:
+	dh_auto_configure -- -DENABLE_ZEND_COMPAT=ON
+
+override_dh_auto_install:
+	@:
+
+override_dh_install:
+	dh_install
+	rm -f $(DESTDIR)/usr/share/hhvm/hack/vim/.gitignore
+	chmod a-x $(DESTDIR)/usr/share/hhvm/hack/emacs/hack-for-hiphop.el

@@ -1,0 +1,12 @@
+# vim:ft=sh:
+
+## Configuration files.
+# CONFIG_FILE="/etc/hhvm/server.ini"
+# SYSTEM_CONFIG_FILE="/etc/hhvm/php.ini"
+
+## User privileges.
+# RUN_AS_USER="www-data"
+# RUN_AS_GROUP="www-data"
+
+## Additional flags.
+# ADDITIONAL_ARGS=""
